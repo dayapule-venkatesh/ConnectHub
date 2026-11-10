@@ -27,7 +27,7 @@ export default function Login() {
     setSubmitting(true);
     try {
       await login(form.email.trim(), form.password);
-      navigate('/', { replace: true });
+      navigate('/chat', { replace: true });
     } catch (requestError) {
       setError(requestError.response?.data?.message || 'Unable to log in. Please try again.');
     } finally {

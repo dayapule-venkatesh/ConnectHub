@@ -39,7 +39,7 @@ export default function Register() {
     setSubmitting(true);
     try {
       await register(form.name.trim(), form.email.trim(), form.password);
-      navigate('/', { replace: true });
+      navigate('/chat', { replace: true });
     } catch (requestError) {
       setError(requestError.response?.data?.message || 'Unable to create your account.');
     } finally {

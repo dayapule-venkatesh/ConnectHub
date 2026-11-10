@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Landing from './pages/Landing';
 import Chat from './pages/Chat';
 
 function ProtectedRoute({ children }) {
@@ -29,12 +30,13 @@ function PublicOnly({ children }) {
     );
   }
 
-  return user ? <Navigate to="/" replace /> : children;
+  return user ? <Navigate to="/chat" replace /> : children;
 }
 
 export default function App() {
   return (
     <Routes>
+      <Route path="/" element={<Landing />} />
       <Route
         path="/login"
         element={
@@ -52,7 +54,7 @@ export default function App() {
         }
       />
       <Route
-        path="/"
+        path="/chat"
         element={
           <ProtectedRoute>
             <Chat />
